@@ -40,11 +40,23 @@ public final class MockDatabase {
         return new ArrayList<>(FREEZERS.values());
     }
 
+    public static Freezer fetchFreezer(long id) {
+        return FREEZERS.get(id);
+    }
+
     public static List<Drawer> fetchDrawers() {
         return new ArrayList<>(DRAWERS.values());
     }
 
+    public static Drawer fetchDrawer(long id) {
+        return DRAWERS.get(id);
+    }
+
     public static List<Item> fetchItems() {
         return new ArrayList<>(ITEMS.values());
+    }
+
+    public static Item fetchItem(long id) {
+        return ITEMS.get(id);
     }
 }

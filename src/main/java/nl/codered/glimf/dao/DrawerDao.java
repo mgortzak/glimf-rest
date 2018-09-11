@@ -10,4 +10,8 @@ public class DrawerDao {
     public List<Drawer> fetchDrawers() {
         return MockDatabase.fetchDrawers();
     }
+
+    public Drawer fetchDrawer(long id) {
+        return MockDatabase.fetchDrawer(id);
+    }
 }

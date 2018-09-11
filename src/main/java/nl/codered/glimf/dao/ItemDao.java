@@ -10,4 +10,8 @@ public class ItemDao {
     public List<Item> fetchItems() {
         return MockDatabase.fetchItems();
     }
+
+    public Item fetchItem(long id) {
+        return MockDatabase.fetchItem(id);
+    }
 }

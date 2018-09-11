@@ -10,4 +10,8 @@ public class FreezerDao {
     public List<Freezer> fetchFreezers() {
         return MockDatabase.fetchFreezers();
     }
+
+    public Freezer fetchFreezer(long id) {
+        return MockDatabase.fetchFreezer(id);
+    }
 }
