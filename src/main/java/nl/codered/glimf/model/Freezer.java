@@ -1,20 +1,27 @@
 package nl.codered.glimf.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Entity
+@Table(name = "FREEZER")
 public class Freezer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @NotNull
     private String name;
+
+    @OneToMany(mappedBy = "freezer")
     private List<Drawer> drawers;
-
-    public Freezer() {
-    }
-
-    public Freezer(long id, String name, List<Drawer> drawers) {
-        this.id = id;
-        this.name = name;
-        this.drawers = drawers;
-    }
 
     public long getId() {
         return id;
