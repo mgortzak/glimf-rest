@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class FreezerController {
     private FreezerRepository freezerRepository;
 
     @PostMapping("/freezers")
-    public Freezer addFreezer(Freezer freezer) {
+    public Freezer addFreezer(@RequestBody Freezer freezer) {
         return freezerRepository.save(freezer);
     }
 
