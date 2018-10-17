@@ -1,6 +1,9 @@
 package nl.codered.glimf.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +21,10 @@ public class Freezer {
     private long id;
 
     @NotNull
+    @Column(name = "\"name\"")
     private String name;
 
-    @OneToMany(mappedBy = "freezer")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "freezer")
     private List<Drawer> drawers;
 
     public long getId() {

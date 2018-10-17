@@ -1,6 +1,9 @@
 package nl.codered.glimf.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +22,18 @@ public class Drawer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "\"order\"")
     private int order;
 
     @NotNull
+    @Column(name = "\"name\"")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "freezer_id", nullable = false)
     private Freezer freezer;
 
-    @OneToMany(mappedBy = "drawer")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "drawer")
     private List<Item> items;
 
     public long getId() {

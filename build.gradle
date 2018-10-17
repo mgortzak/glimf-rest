@@ -15,6 +15,10 @@ bootJar {
     baseName = rootProject.name
 }
 
+//bootRun {
+//    jvmArgs=["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=54321"]
+//}
+
 repositories {
     mavenCentral()
 }
