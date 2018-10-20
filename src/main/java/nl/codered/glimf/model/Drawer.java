@@ -1,5 +1,9 @@
 package nl.codered.glimf.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +20,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "DRAWER")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Drawer {
 
     @Id
@@ -31,9 +36,11 @@ public class Drawer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "freezer_id", nullable = false)
+    @JsonBackReference
     private Freezer freezer;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "drawer")
+    @JsonManagedReference
     private List<Item> items;
 
     public long getId() {

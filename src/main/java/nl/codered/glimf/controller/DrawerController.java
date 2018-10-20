@@ -21,7 +21,7 @@ public class DrawerController {
     }
 
     @GetMapping("/drawers")
-    public Iterable<Drawer> fetchDrawer() {
+    public Iterable<Drawer> fetchDrawers() {
         return drawerRepository.findAll();
     }
 

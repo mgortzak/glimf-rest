@@ -1,5 +1,8 @@
 package nl.codered.glimf.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +17,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ITEM")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Item {
 
     @Id
@@ -29,6 +33,7 @@ public class Item {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "drawer_id", nullable = false)
+    @JsonBackReference
     private Drawer drawer;
 
 

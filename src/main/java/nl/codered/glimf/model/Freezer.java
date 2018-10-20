@@ -1,5 +1,8 @@
 package nl.codered.glimf.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "FREEZER")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Freezer {
 
     @Id
@@ -25,6 +29,7 @@ public class Freezer {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "freezer")
+    @JsonManagedReference
     private List<Drawer> drawers;
 
     public long getId() {
